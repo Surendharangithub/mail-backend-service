@@ -9,6 +9,13 @@ const PORT = process.env.NODE_APP_PORT;
 
 const resend = new Resend(process.env.NODE_APP_RESEND_API);
 
+app.get('/', (_, res)=> {
+    res.json({
+        success: true,
+        message: 'Route working Fine'
+    })
+})
+
 app.post('/api/send-email', async (_, res) => {
 
     const { data, error } = await resend.emails.send({
